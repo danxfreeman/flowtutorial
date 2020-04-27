@@ -11,7 +11,6 @@ library(ggridges)
 
 # Import sample annotations.
 key <- read.csv("key.csv")
-key$file <- str_extract(key$file, "\\w+") # use regular expressions to manipulate strings
 
 # Import and concatenate flow data.
 fs <- read.flowSet(key$files)
@@ -20,9 +19,6 @@ flow <- lapply(flow, as.data.table)
 concat <- rbindlist(flow, idcol = "file")
 concat <- inner_join(key, concat, by = "file")
 concat$file <- NULL
-
-# Export data.
-fwrite(concat, file = "concatenated_data.csv")
 
 # Plot sample counts.
 p1 <- samples %>% 

@@ -113,6 +113,9 @@ panel <- ggarrange(p1, p2, nrow = 1, align = "h")
 ggsave(panel, file = "sample_cell_count.pdf")
 ```
 
+![](/img/sample_cell_count.png)
+> You should end up with something like this
+
 Finally, let's see what each marker looks like at the cellular level. You can plug flowFrames directly into `ggcyto` or convert them into dataframes and use plain `ggplot2`.
 
 ```
@@ -132,3 +135,6 @@ flow %>%
   labs(fill = "Outcome") +
   theme_ggpubr()
 ```
+
+![](/img/marker_distribution1.png)
+> You should end up with something like this
